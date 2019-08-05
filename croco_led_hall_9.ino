@@ -1,7 +1,7 @@
 /*
 Hardware:
 Arduino Nano
-Plain coloured LEDs
+Plain red and yellow LEDs
 Analog Hall Sensors (similar to honeywell)
 Button
 
@@ -12,7 +12,6 @@ The code wait to sense something outside the treshold and says "START BRUSHING".
 When t finishes, the led shut down and it says "You cleaned this tooth!". A counter c keeps track of how many teeth you brushed. When you reach the right amount (total number of sides), it says "you finish" and select a random pattern to 
 light up the leds.
 Error handling:
-If you stop brushing befre t finishes, it says "you should restart" and restart the sensing.
 If you brush over a certain threshold (brushing "too hard") it says you are brushing to hard and restart the sensing.
 
 Get dirty teeth:
