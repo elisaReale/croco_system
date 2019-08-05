@@ -1,9 +1,9 @@
 /*
 Hardware:
 Arduino Nano
-Plain coloured LEDs
+Plain red and yellow LEDs
 Analog Hall Sensors (similar to honeywell)
-Button
+Buttons
 
 Software:
 Code for crocodile with light feedback to teach the children how to brush properly. 
@@ -12,7 +12,7 @@ The code wait to sense something outside the treshold and says "START BRUSHING".
 When t finishes, the led shut down and it says "You cleaned this tooth!". A counter c keeps track of how many teeth you brushed. When you reach the right amount (total number of sides), it says "you finish" and select a random pattern to 
 light up the leds.
 Error handling:
-If you stop brushing befre t finishes, it says "you should restart" and restart the sensing.
+If you stop brushing before t finishes, it says "you should restart" and restart the sensing.
 If you brush over a certain threshold (brushing "too hard") it says you are brushing to hard and restart the sensing.
 
 Get dirty teeth:
@@ -59,6 +59,7 @@ int outputValue = 0; //momento dellintervallo di t
 unsigned long previousMillisF;
 unsigned long currentMillisF;
 
+//function for the button "eat", it starts a 30 secs timer during which the leds turn on.
 void get_dirty_teeth(){
   clearall();
   e=0;
@@ -100,7 +101,7 @@ void blink_increase(int p, int x){
  }
   
 
-//function for different blinking patterns to use at the FINISH
+//functions for different blinking patterns to use at the FINISH
 void clearall(){
  
   for (int pin = 0; pin <= sizeof(allLedPins )/2; pin++) {
@@ -347,6 +348,7 @@ void loop() {
           
             print_to_file("You already brushed this tooth!",i);
           
+          //when the counter reaches the total number of leds, it begins the FINISH "LEDs dance"
           }else if ( c >= sizeof(allLedPins )/2 ){
               print_to_file("you finished!" ,i);
               delay(1000);
